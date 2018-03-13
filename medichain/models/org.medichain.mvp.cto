@@ -1,0 +1,85 @@
+/**
+* For the first iteration of the POC, all the model definitions
+* will be placed in one file. As the project evolves, we might 
+*proceed to modularize each component (i.e seperate concerns)  
+**/
+
+namespace org.medichain.mvp
+import composer.base.*
+import composer.events.*
+
+enum TypeOfConsultation {
+  o CLINICAL
+  o SURGERY
+  o IMMUNIZATION
+}
+
+enum ImmunizationType {
+  o HEPATITISB
+  o DTP
+  o HAEMOPHILLIUSINFLUENZA
+  o PNEUOMACOCAL
+  o POLIO 
+  o ROTAVIRUS
+  o MMRS
+  o VARICELLA
+  o HEPATITISA
+  o MENINGCOCAL
+  o HPV
+  o INFLUENZA
+}
+
+participant Patient identified by patientId extends Member {
+  o String patientId
+}
+
+participant MedicalPractitioner identified by practitionerId extends Member {
+  o String practitionerId
+}
+
+participant DataAccessor identified by accessorId extends Member {
+  o String accessorId
+}
+
+asset ProfileInformation identified by assetId {
+  o String assetId
+  o String firstName
+  o String lastName
+  o DateTime dateOfBirth
+  o Integer phoneNumber optional
+  o String streetAddress
+  o String city
+  o String country
+  o String zipCode
+  o Integer[] numberOfConsultations optional
+}
+
+asset ConsultationInformation identified by consultationId {
+  o String consultationId
+  o TypeOfConsultation consultationType
+  o DateTime dateOfConsultation
+  o String lastName
+  o String streetAddress
+  o String city
+  o String country
+  o String zipCode
+  --> AQl6Test AQl6TestResults optional
+
+}
+
+asset AQl6Test identified by testId {
+  o String testId
+
+}
+
+asset ImmunizationRecord identified by immunizationId {
+  o String immunizationId
+  o String subTypeOfImmunization
+  o DateTime dateOfImmunization
+}
+
+transaction updateConsultationCount {
+  o Integer addNewConsultation
+  --> ProfileInformation numberOfConsultations
+}
+
