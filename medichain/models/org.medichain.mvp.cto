@@ -25,8 +25,6 @@ enum ImmunizationType {
   o VARICELLA
   o HEPATITISA
   o MENINGCOCAL
-  o HPV
-  o INFLUENZA
 }
 
 participant Patient identified by patientId extends Member {
