@@ -41,8 +41,14 @@ participant DataAccessor identified by accessorId extends Member {
 
 asset ProfileInformation identified by assetId {
   o String assetId
+  o String userName
   o String firstName
-  o String lastName
+  o String middleName optional
+  o String lastName 
+  o String source
+  o String facility
+  o String facilityId
+  --> Prescription[] currentPrescriptions
   o DateTime dateOfBirth
   o Integer phoneNumber optional
   o String streetAddress
@@ -50,6 +56,26 @@ asset ProfileInformation identified by assetId {
   o String country
   o String zipCode
   o Integer[] numberOfConsultations optional
+}
+
+asset Prescription identified by prescriptionId {
+  o String prescriptionId
+  o String patientId
+  o Integer pharmacyId
+  o DateTime dateAdded
+  o DateTime dateModified
+  o Integer providerId
+  o DateTime startDate
+  o String drug
+  o String dosage
+  o String quantity
+  o Double size 
+  o Integer unit 
+  o String perRefil // amount of quantity to be issued per refil visit ?
+  o DateTime filledDate // Date the prescription was filledDate
+  o String medication  
+  o String note
+  o Boolean active // Original Schema says Integer , Ask Dr. Nick 
 }
 
 asset ConsultationInformation identified by consultationId {
@@ -73,7 +99,7 @@ asset AQl6Test identified by testId {
 asset ImmunizationRecord identified by immunizationId {
   o String immunizationId
   o String subTypeOfImmunization
-  o DateTime dateOfImmunization
+  o DateTime dateOfImmunization 
 }
 
 transaction updateConsultationCount {
