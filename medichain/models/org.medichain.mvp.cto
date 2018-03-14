@@ -8,6 +8,10 @@ namespace org.medichain.mvp
 import composer.base.*
 import composer.events.*
 
+/** 
+**Enum for the type of consultation
+ **/
+
 enum TypeOfConsultation {
   o CLINICAL
   o SURGERY
@@ -27,6 +31,12 @@ enum ImmunizationType {
   o MENINGCOCAL
 }
 
+enum Gender {
+  o Male 
+  o Female
+  o Undisclosed
+}
+
 participant Patient identified by patientId extends Member {
   o String patientId
 }
@@ -39,12 +49,13 @@ participant DataAccessor identified by accessorId extends Member {
   o String accessorId
 }
 
-asset ProfileInformation identified by assetId {
-  o String assetId
+asset ProfileInformation identified by patientId {
+  o String patientId
   o String userName
   o String firstName
   o String middleName optional
   o String lastName 
+  o Gender sex 
   o String source
   o String facility
   o String facilityId
@@ -53,9 +64,12 @@ asset ProfileInformation identified by assetId {
   o Integer phoneNumber optional
   o String streetAddress
   o String city
+  o String state 
   o String country
   o String zipCode
+  o String email
   o Integer[] numberOfConsultations optional
+  --> InsuranceData InsuranceInfo optional
 }
 
 asset Prescription identified by prescriptionId {
@@ -75,10 +89,12 @@ asset Prescription identified by prescriptionId {
   o DateTime filledDate // Date the prescription was filledDate
   o String medication  
   o String note
-  o Boolean active // Original Schema says Integer , Ask Dr. Nick 
+  o Boolean active 
+ 
 }
 
-asset ConsultationInformation identified by consultationId {
+asset ConsultationInformation identified by patientId {
+  o String patientId
   o String consultationId
   o TypeOfConsultation consultationType
   o DateTime dateOfConsultation
@@ -87,14 +103,47 @@ asset ConsultationInformation identified by consultationId {
   o String city
   o String country
   o String zipCode
-  --> AQl6Test AQl6TestResults optional
+ /*
+  --> AQl6Test AQl6TestResults optional*/
 
 }
-
+/*
 asset AQl6Test identified by testId {
   o String testId
 
+} */
+
+asset InsuranceData identified by patientId {
+o String patientId
+o String typeOfInsurance /* Change to Enum */
+o String provider 
+o String plan_name 
+o String policy_number
+o Integer group_number 
+o String subscriber_lname 
+o String subscriber_mname 
+o String subscriber_fname 
+o String subscriber_relationship 
+o String subscriber_ss 
+o DateTime subscriber_DOB
+o String subscriber_street 
+o String subscriber_postal_code 
+o String subscriber_city 
+o String subscriber_state 
+o String subscriber_country 
+o String subscriber_phone 
+o String subscriber_employer 
+o String subscriber_employer_street 
+o String subscriber_employer_postal_code 
+o String subscriber_employer_state 
+o String subscriber_employer_country 
+o String subscriber_employer_city 
+o String copay 
+o DateTime date 
+o String subscriber_sex 
+o String accept_assignment 
 }
+
 
 asset ImmunizationRecord identified by immunizationId {
   o String immunizationId
