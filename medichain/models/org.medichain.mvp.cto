@@ -10,13 +10,17 @@ import composer.events.*
 
 /** 
 **Enum for the type of consultation
- **/
+**/
 
 enum TypeOfConsultation {
   o CLINICAL
   o SURGERY
   o IMMUNIZATION
 }
+
+/** 
+**Enum for the type of Immunization
+**/
 
 enum ImmunizationType {
   o HEPATITISB
@@ -31,22 +35,81 @@ enum ImmunizationType {
   o MENINGCOCAL
 }
 
+/** 
+**Enum for the type of Disease
+**/
+enum Disease {
+  o CARDIOVASCULAR
+  o CANCER 
+  o CHRONIC_LOWER_RESPIRATORY_DISEASE
+  o STROKE 
+  o ANDROPAUSE
+  o ARTHRITIS
+  o ACUTE_BRONCHITIS
+  o BURN 
+  o CROHNS  
+  o DEPRESSION
+  o DIARRHEA
+  o DERMATITIS
+  o ENDOMETRIOSIS
+  o EPILEPSY
+  o FIBROMYALGIA
+  o DVT
+  o HERPES 
+  o GONORRHEA
+  o GOUT
+  o GYNECOMASTIA
+  o MYOCARDIAL_INFARCTION
+  o HEMORRHOIDS
+  o HIV
+  o AIDS 
+}
+
+/** 
+**Enum for the type of Gender
+**/
 enum Gender {
   o Male 
   o Female
   o Undisclosed
 }
 
+
+/** 
+**Enum for the type of DataAccessor
+**/
+enum DataAccessorType {
+  o ACADEMIC_RESEARCHER
+  o COMMERCIAL_ENTITY
+}
+
 participant Patient identified by patientId extends Member {
   o String patientId
+  --> MedicalPractitioner patientDoctor
+  --> MedicalPractice patientPractice
+}
+
+participant MedicalPractice identified by practiceId {
+  o String practiceId
+  o String practiceName
+  o Integer practiceRegistrationNumber
 }
 
 participant MedicalPractitioner identified by practitionerId extends Member {
   o String practitionerId
+  o String userName
+  o String firstName
+  o String lastName
+  o Integer registrationNumber 
+  o String speciality 
+  o String assistant optional 
+  --> MedicalPractice practicionerPlaceOfWork
 }
 
 participant DataAccessor identified by accessorId extends Member {
   o String accessorId
+  o DataAccessor typeOfDataAccessor
+  o String name 
 }
 
 asset ProfileInformation identified by patientId {
@@ -69,8 +132,16 @@ asset ProfileInformation identified by patientId {
   o String zipCode
   o String email
   o Integer[] numberOfConsultations optional
-  --> InsuranceData InsuranceInfo optional
 }
+
+
+asset PatientMasterData identified by masterDataId {
+  o String masterDataId
+  --> Prescription[] patientPrescriptions optional
+  --> ImmunizationRecord[] patientImmunizationHistory optional
+  --> ConsultationInformation patientConsultationHistory optional
+  --> InsuranceData patientInsuranceInfo optional
+} 
 
 asset Prescription identified by prescriptionId {
   o String prescriptionId
@@ -81,7 +152,7 @@ asset Prescription identified by prescriptionId {
   o Integer providerId
   o DateTime startDate
   o String drug
-  o String dosage
+  o String dosage 
   o String quantity
   o Double size 
   o Integer unit 
@@ -97,12 +168,11 @@ asset ConsultationInformation identified by patientId {
   o String patientId
   o String consultationId
   o TypeOfConsultation consultationType
-  o DateTime dateOfConsultation
-  o String lastName
-  o String streetAddress
-  o String city
-  o String country
-  o String zipCode
+  o DateTime dateOfConsultation 
+  o Disease consultationDisease optional
+  --> Prescription[] consultationPrescription optional
+  --> ImmunizationRecord[] consultationImmunization optional
+  
  /*
   --> AQl6Test AQl6TestResults optional*/
 
@@ -156,3 +226,10 @@ transaction updateConsultationCount {
   --> ProfileInformation numberOfConsultations
 }
 
+transaction updateConsultationInfo {
+  o ConsultationInformation updatedDatedInfo
+}
+
+transaction updatePatientMedicalHistory {
+  --> PatientMasterData patientMasterData
+}
