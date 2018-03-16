@@ -232,5 +232,5 @@ transaction updateConsultationInfo {
 
 
 transaction updatePatientMedicalHistory {
-  --> PatientMasterData patientMaswterData
+  --> PatientMasterData patientMasterData
 }
