@@ -102,13 +102,15 @@ participant MedicalPractitioner identified by practitionerId extends Member {
   o Integer registrationNumber 
   o String speciality 
   o String assistant optional 
-  --> MedicalPractice practicionerPlaceOfWork
+  --> MedicalPractice practicionerPlaceOfWork 
+  o String[] authorized optional
 }
 
 participant DataAccessor identified by accessorId extends Member {
   o String accessorId
   o DataAccessor typeOfDataAccessor
-  o String name 
+  o String accessorName 
+  o String[] authorized optional
 }
 
 asset ProfileInformation identified by patientId {
@@ -221,16 +223,30 @@ asset ImmunizationRecord identified by immunizationId {
 }
 
 transaction updateConsultationCount {
-  o Integer addNewConsultation 
-  --> ProfileInformation numberOfConsultations
-}
+    o Integer addNewConsultation 
+    --> ProfileInformation numberOfConsultations
+  }
 
 
 transaction updateConsultationInfo {
-  o ConsultationInformation updatedDatedInfo
-}
+    o ConsultationInformation updatedDatedInfo
+  }
 
 
 transaction updatePatientMedicalHistory {
-  --> PatientMasterData patientMasterData
-}
+    --> PatientMasterData patientMasterData
+  }
+
+abstract transaction PermissionControl {
+    o String accessorId
+  }
+
+transaction GrantAccess extends PermissionControl {
+  }
+
+  transaction RevokeAccess extends PermissionControl {
+  }
+
+  event MemberEvent {
+      o PermissionControl permissionControl
+  }
