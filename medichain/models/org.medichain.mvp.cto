@@ -218,7 +218,7 @@ o String accept_assignment
 
 asset ImmunizationRecord identified by immunizationId {
   o String immunizationId
-  o String subTypeOfImmunization
+  o ImmunizationType subTypeOfImmunization
   o DateTime dateOfImmunization 
 }
 
