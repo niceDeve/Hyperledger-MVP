@@ -108,7 +108,7 @@ participant MedicalPractitioner identified by practitionerId extends Member {
 
 participant DataAccessor identified by accessorId extends Member {
   o String accessorId
-  o DataAccessor typeOfDataAccessor
+  o DataAccessorType typeOfDataAccessor
   o String accessorName 
   o String[] authorized optional
 }
