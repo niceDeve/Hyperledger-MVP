@@ -1,0 +1,25 @@
+/**
+* Queries for MediChain MVP
+*/
+
+query selectAllMedicalPractices {
+  description: "Selects all the registered Medical Practices"
+  statement: 
+    SELECT org.medichain.mvp.MedicalPractice
+}
+
+query selectAllPatients {
+  description: "Selects all patients on the platform"
+  statement:
+    SELECT org.medichain.mvp.Patient
+}
+
+/*
+query selectPatientsByMedicalPractice {
+  description: "Selects all patients filtered by Medical Practice"
+  statement:
+    SELECT org.medichain.mvp.Patient
+      WHERE 
+}
+
+*/
