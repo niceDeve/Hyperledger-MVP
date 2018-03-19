@@ -1,5 +1,5 @@
 /**
- * New access control file
+ * Access Control File for MediChain Network
  */
  rule AllAccess {
      description: "AllAccess - grant everything to everybody."
@@ -22,6 +22,22 @@ rule NetworkAdminSystem {
     participant: "org.hyperledger.composer.system.NetworkAdmin"
     operation: ALL
     resource: "org.hyperledger.composer.system.**"
+    action: ALLOW
+}
+
+rule MedicalPractionerCreateDataAccessor {
+    description: "Allow medical practitioner to create Data Accessors"
+    participant: "org.medichain.mvp.MedicalPractitioner"
+    operation: CREATE, UPDATE, READ
+    resource: "org.medichain.mvp.DataAccessor"
+    action: ALLOW
+}
+
+rule MedicalPractionerAuthorizeDataPractitioner {
+    description: "Allow medical practitioner to authorize Data Accessors"
+    participant: "org.medichain.mvp.MedicalPractitioner"
+    operation: CREATE, UPDATE
+    resource:  "org.medichain.mvp.GrantAccess"
     action: ALLOW
 }
 
