@@ -41,3 +41,27 @@ rule MedicalPractionerAuthorizeDataPractitioner {
     action: ALLOW
 }
 
+rule MedicalPractionerRevokeDataPractitioner {
+    description: "Allow medical practitioner to authorize Data Accessors"
+    participant: "org.medichain.mvp.MedicalPractitioner"
+    operation: CREATE, UPDATE
+    resource:  "org.medichain.mvp.RevokeAccess"
+    action: ALLOW
+}
+
+rule OwnRecordFullAccess {
+    description: "Allow all participants full access to their own record"
+    participant(p): "org.medichain.mvp.Member"
+    operation: ALL
+    resource(r): "org.medichain.mvp.Member"
+    condition: (r.getIdentifier() === p.getIdentifier())
+    action: ALLOW
+}
+
+rule MedicalPractitionerOp {
+    description: "Allow medical practitioner to update medical practiitoner resource"
+    participant: "org.medichain.mvp.MedicalPractitioner"
+    operation: CREATE, UPDATE, READ
+    resource: "org.medichain.mvp.MedicalPractitioner"
+    action: ALLOW
+}
