@@ -1,0 +1,508 @@
+<div class="modal fade" id="addAssetModal" tabindex="-1" role="dialog" aria-labelledby="addAssetModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="addAssetModalLabel">Add Asset</h4>
+      </div>
+      <form [formGroup]="myForm">
+        <div class="modal-body">
+
+
+          
+
+            
+              <div class="form-group text-left">
+                <label for="prescriptionId">prescriptionId</label>
+                
+                  <input formControlName="prescriptionId" type="text" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="patientId">patientId</label>
+                
+                  <input formControlName="patientId" type="text" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="pharmacyId">pharmacyId</label>
+                
+                  <input formControlName="pharmacyId" type="number" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="dateAdded">dateAdded</label>
+                
+                  <input formControlName="dateAdded" type="text" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="dateModified">dateModified</label>
+                
+                  <input formControlName="dateModified" type="text" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="providerId">providerId</label>
+                
+                  <input formControlName="providerId" type="number" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="startDate">startDate</label>
+                
+                  <input formControlName="startDate" type="text" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="drug">drug</label>
+                
+                  <input formControlName="drug" type="text" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="dosage">dosage</label>
+                
+                  <input formControlName="dosage" type="text" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="quantity">quantity</label>
+                
+                  <input formControlName="quantity" type="text" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="size">size</label>
+                
+                  <input formControlName="size" type="number" step='any' class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="unit">unit</label>
+                
+                  <input formControlName="unit" type="number" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="perRefil">perRefil</label>
+                
+                  <input formControlName="perRefil" type="text" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="filledDate">filledDate</label>
+                
+                  <input formControlName="filledDate" type="text" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="medication">medication</label>
+                
+                  <input formControlName="medication" type="text" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="note">note</label>
+                
+                  <input formControlName="note" type="text" class="form-control">
+                
+              </div>
+            
+          
+
+            
+              <div class="form-group text-left">
+                <label for="active">active</label>
+                
+                  <input formControlName="active" type="checkbox" class="form-control">
+                
+              </div>
+            
+          
+
+        </div>
+        <div class="modal-footer">
+          <button (click)="addAsset(myForm);" type="submit" class="btn btn-success" data-dismiss="modal">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="modal fade" id="updateAssetModal" tabindex="-1" role="dialog" aria-labelledby="updateAssetModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="updateAssetModalLabel">Update Asset</h4>
+      </div>
+      <form [formGroup]="myForm">
+        <div class="modal-body">
+
+
+          
+            <div class="form-group text-left">
+              <label for="prescriptionId">prescriptionId</label>
+
+              
+                <input [ngModel]="prescriptionId"formControlName="prescriptionId" type="text" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="patientId">patientId</label>
+
+              
+                <input [ngModel]="patientId"formControlName="patientId" type="text" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="pharmacyId">pharmacyId</label>
+
+              
+                <input [ngModel]="pharmacyId" formControlName="pharmacyId" type="number" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="dateAdded">dateAdded</label>
+
+              
+                <input [ngModel]="dateAdded"formControlName="dateAdded" type="text" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="dateModified">dateModified</label>
+
+              
+                <input [ngModel]="dateModified"formControlName="dateModified" type="text" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="providerId">providerId</label>
+
+              
+                <input [ngModel]="providerId" formControlName="providerId" type="number" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="startDate">startDate</label>
+
+              
+                <input [ngModel]="startDate"formControlName="startDate" type="text" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="drug">drug</label>
+
+              
+                <input [ngModel]="drug"formControlName="drug" type="text" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="dosage">dosage</label>
+
+              
+                <input [ngModel]="dosage"formControlName="dosage" type="text" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="quantity">quantity</label>
+
+              
+                <input [ngModel]="quantity"formControlName="quantity" type="text" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="size">size</label>
+
+              
+                <input [ngModel]="size" formControlName="size" type="number" step='any' class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="unit">unit</label>
+
+              
+                <input [ngModel]="unit" formControlName="unit" type="number" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="perRefil">perRefil</label>
+
+              
+                <input [ngModel]="perRefil"formControlName="perRefil" type="text" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="filledDate">filledDate</label>
+
+              
+                <input [ngModel]="filledDate"formControlName="filledDate" type="text" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="medication">medication</label>
+
+              
+                <input [ngModel]="medication"formControlName="medication" type="text" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="note">note</label>
+
+              
+                <input [ngModel]="note"formControlName="note" type="text" class="form-control">
+              
+
+            </div>
+          
+            <div class="form-group text-left">
+              <label for="active">active</label>
+
+              
+                <input [ngModel]="active" formControlName="active" type="checkbox" class="form-control">
+              
+
+            </div>
+          
+
+
+        </div>
+        <div class="modal-footer">
+          <button (click)="updateAsset(myForm)" type="submit" class="btn btn-success" data-dismiss="modal">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="deleteAssetModal" tabindex="-1" role="dialog" aria-labelledby="deleteAssetModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="deleteAssetModalLabel">Delete Asset</h4>
+      </div>
+      <form [formGroup]="myForm" (ngSubmit)="deleteAsset()">
+        <div class="modal-body">
+          Are you sure you want to delete this asset?
+        </div>
+        <div class="modal-footer">
+          <button (click)="deleteAsset()" type="submit" class="btn btn-danger" data-dismiss="modal">Yes</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+	<div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+		<strong>Error:</strong> {{errorMessage}}
+	</div>
+  <h1 id='assetName'>Prescription</h1>
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <button (click)="resetForm()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addAssetModal">Add Asset</button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered table-responsive table-striped">
+        <thead class="thead">
+          <tr class="thead-cols">
+            
+                <th class="info">prescriptionId</th>
+            
+                <th class="info">patientId</th>
+            
+                <th class="info">pharmacyId</th>
+            
+                <th class="info">dateAdded</th>
+            
+                <th class="info">dateModified</th>
+            
+                <th class="info">providerId</th>
+            
+                <th class="info">startDate</th>
+            
+                <th class="info">drug</th>
+            
+                <th class="info">dosage</th>
+            
+                <th class="info">quantity</th>
+            
+                <th class="info">size</th>
+            
+                <th class="info">unit</th>
+            
+                <th class="info">perRefil</th>
+            
+                <th class="info">filledDate</th>
+            
+                <th class="info">medication</th>
+            
+                <th class="info">note</th>
+            
+                <th class="info">active</th>
+            
+              <th class="info">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let asset of allAssets">
+
+            
+                <td>{{asset.prescriptionId}}</td>
+            
+                <td>{{asset.patientId}}</td>
+            
+                <td>{{asset.pharmacyId}}</td>
+            
+                <td>{{asset.dateAdded}}</td>
+            
+                <td>{{asset.dateModified}}</td>
+            
+                <td>{{asset.providerId}}</td>
+            
+                <td>{{asset.startDate}}</td>
+            
+                <td>{{asset.drug}}</td>
+            
+                <td>{{asset.dosage}}</td>
+            
+                <td>{{asset.quantity}}</td>
+            
+                <td>{{asset.size}}</td>
+            
+                <td>{{asset.unit}}</td>
+            
+                <td>{{asset.perRefil}}</td>
+            
+                <td>{{asset.filledDate}}</td>
+            
+                <td>{{asset.medication}}</td>
+            
+                <td>{{asset.note}}</td>
+            
+                <td>{{asset.active}}</td>
+            
+            <td>
+              <button (click)="getForm(asset.prescriptionId);" type="button" class="btn btn-success" data-toggle="modal" data-target="#updateAssetModal">Update Asset</button>
+
+              <button (click)="setId(asset.prescriptionId);" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAssetModal">Delete Asset</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
