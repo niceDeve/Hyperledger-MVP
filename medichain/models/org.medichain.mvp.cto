@@ -136,17 +136,18 @@ asset ProfileInformation identified by patientId {
 }
 
 
-asset PatientMasterData identified by masterDataId {
+asset PatientMasterData identified by patientId {
+  o String patientId
   o String masterDataId
   --> Prescription[] patientPrescriptions optional
   --> ImmunizationRecord[] patientImmunizationHistory optional
-  --> ConsultationInformation patientConsultationHistory optional
-  --> InsuranceData patientInsuranceInfo optional
+  --> ConsultationInformation[] patientConsultationHistory optional
+  --> InsuranceData[] patientInsuranceInfo optional
 } 
 
-asset Prescription identified by prescriptionId {
-  o String prescriptionId
+asset Prescription identified by patientId {
   o String patientId
+  o String prescriptionId
   o Integer pharmacyId
   o DateTime dateAdded
   o DateTime dateModified
@@ -173,6 +174,7 @@ asset ConsultationInformation identified by patientId {
   o Disease consultationDisease optional
   --> Prescription[] consultationPrescription optional
   --> ImmunizationRecord[] consultationImmunization optional
+  
   
  /*
   --> AQl6Test AQl6TestResults optional*/
@@ -217,6 +219,7 @@ o String accept_assignment
 
 
 asset ImmunizationRecord identified by immunizationId {
+  o String patientId
   o String immunizationId
   o ImmunizationType subTypeOfImmunization
   o DateTime dateOfImmunization 
@@ -244,7 +247,7 @@ abstract transaction PermissionControl {
 transaction GrantAccess extends PermissionControl {
   }
 
-  transaction RevokeAccess extends PermissionControl {
+ transaction RevokeAccess extends PermissionControl {
   }
 
   event MemberEvent {
